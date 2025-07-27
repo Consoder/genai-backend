@@ -143,6 +143,9 @@ def refresh_token(request: Request):
         raise HTTPException(status_code=401, detail="Invalid refresh token")
     new_access_token = create_access_token(data={"sub": payload["sub"]}, expires_minutes=15)
     return {"access_token": new_access_token, "token_type": "bearer"}
+@app.get("/")
+def root():
+    return {"status": "✅ GenAI backend is live!", "docs": "/docs"}
 
 @app.get("/logout")
 def logout():
