@@ -226,6 +226,8 @@ def get_conversations(user=Depends(get_current_user)):
                 "messages": [{"role": m.role, "content": m.content} for m in messages]
             })
         return result
-    if __name__ == "__main__":
+
+if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=10000, reload=False)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+
